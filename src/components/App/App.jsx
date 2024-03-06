@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import Modal from "react-modal";
 import SearchBar from "../SearchBar/SearchBar";
-import clsx from "clsx";
-
-// import ErrorMessage from "./error-message/ErrorMessage";
-// import ImageGallery from "./image-gallery/ImageGallery";
-// import Loader from "./loader/Loader";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Loader from "../Loader/Loader";
 // import LoadMoreBtn from "./loadmore-btn/LoadMoreBtn";
 // import ImageModal from "./Image-modal/ImageModal";
+import { useState, useEffect } from "react";
+import Modal from "react-modal";
+import clsx from "clsx";
+
 
 import { getPictures } from "../../api/controller";
 import styles from "./App.module.css";
@@ -20,8 +20,8 @@ const App = () => {
   const [hasMorePages, setHasMorePages] = useState(false);
   const [filter, setFilter] = useState("");
 
-  // const [selectedImage, setSelectedImage] = useState(null);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     Modal.setAppElement("#root");
@@ -58,10 +58,10 @@ const App = () => {
 
   // const handleMore = () => updateImages(filter, currPage + 1);
 
-  // const openModal = (image) => {
-  //   setSelectedImage(image);
-  //   setModalIsOpen(true);
-  // };
+  const openModal = (image) => {
+    setSelectedImage(image);
+    setModalIsOpen(true);
+  };
 
   // const closeModal = () => {
   //   setModalIsOpen(false);
@@ -71,9 +71,9 @@ const App = () => {
     <div className={styles.container}>
       <SearchBar onSearch={handleSearch} />
       <div className={clsx(styles.content, styles.section)}>
-        {/* <ErrorMessage isError={error} />
+        <ErrorMessage isError={error} />
         <ImageGallery images={items} openModal={openModal} />
-        <Loader isLoading={loading} /> */}
+        <Loader isLoading={loading} />
 
         {/* <LoadMoreBtn
           isVisible={hasMorePages && !loading}

@@ -1,8 +1,6 @@
 import { Toaster } from "react-hot-toast";
-// import { HiOutlineSearch } from "react-icons/hi";
-
+import { HiOutlineSearch } from "react-icons/hi";
 import { errorMessage, errNotify } from "../../notification/messages";
-
 import styles from "./SearchBar.module.css";
 
 const SearchBar = ({ onSearch }) => {
@@ -34,7 +32,7 @@ const SearchBar = ({ onSearch }) => {
         </div>
 
         <button className={styles.button} type="submit">
-          {/* <HiOutlineSearch /> */}
+          <HiOutlineSearch />
         </button>
       </form>
     </header>

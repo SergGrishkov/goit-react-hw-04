@@ -10,7 +10,7 @@ export const getPictures = async (searchText, page) => {
       client_id: ACCESS_KEY,
       page: page,
       query: encodeURIComponent(searchText),
-      per_page: 10,
+      per_page: 12,
     };
 
     const endPoint = `/search/photos?${new URLSearchParams(params).toString()}`;

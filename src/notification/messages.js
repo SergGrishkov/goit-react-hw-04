@@ -8,13 +8,13 @@ export const errorMessage = {
 
 export const errNotify = (message) => {
   toast.error(message, {
-    duration: 500,
+    duration: 1000,
   });
 };
 
 
 export const okNotify = (message) => {
   toast.success(message, {
-    duration: 500,
+    duration: 1000,
   });
 };
