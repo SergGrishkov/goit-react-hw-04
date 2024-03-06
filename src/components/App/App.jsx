@@ -2,8 +2,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
-// import LoadMoreBtn from "./loadmore-btn/LoadMoreBtn";
-// import ImageModal from "./Image-modal/ImageModal";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "../ImageModal/ImageModal";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import clsx from "clsx";
@@ -48,24 +48,24 @@ const App = () => {
     }
   };
 
-  const handleSearch = (strFilter) => {
-    setFilter(strFilter);
+  const handleSearch = (inputValue) => {
+    setFilter(inputValue);
     setItems([]);
     setCurrPage(0);
     setHasMorePages(false);
-    updateImages(strFilter, 1);
+    updateImages(inputValue, 1);
   };
 
-  // const handleMore = () => updateImages(filter, currPage + 1);
+  const handleMore = () => updateImages(filter, currPage + 1);
 
   const openModal = (image) => {
     setSelectedImage(image);
     setModalIsOpen(true);
   };
 
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  // };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -75,16 +75,16 @@ const App = () => {
         <ImageGallery images={items} openModal={openModal} />
         <Loader isLoading={loading} />
 
-        {/* <LoadMoreBtn
+        <LoadMoreBtn
           isVisible={hasMorePages && !loading}
           onClick={handleMore}
-        ></LoadMoreBtn> */}
+        ></LoadMoreBtn>
       </div>
-      {/* <ImageModal
+      <ImageModal
         isOpen={modalIsOpen}
         image={selectedImage}
         onCloseClick={closeModal}
-      /> */}
+      />
     </div>
   );
 };
