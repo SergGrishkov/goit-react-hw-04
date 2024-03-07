@@ -1,29 +1,16 @@
-import { ImageCard } from './ImageCard';
-
+import { ImageCard } from '../ImageCard/ImageCard';
 import styles from './ImageGallery.module.css';
 
 const ImageGallery = ({ images, openModal }) => {
-  const handleImageClick = event => {
-    const clickedCard = event.target.closest('li');
-    if (clickedCard) {
-      const imageId = clickedCard.dataset.imageid;
-      const clickedImageObj = images.find(image => image.id === imageId);
-      if (clickedImageObj) {
-        openModal(clickedImageObj);
-      }
-    }
-  };
   return (
     <>
-      {images.length > 0 && (
-        <ul className={styles.gallery} onClick={handleImageClick}>
-          {images.map(image => (
-            <li key={image.id} data-imageid={image.id}>
-              <ImageCard image={image} />
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul className={styles.gallery}>
+        {images.map((image) => (
+          <li key={image.id} >
+            <ImageCard imageCard={image} onOpen={openModal} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
